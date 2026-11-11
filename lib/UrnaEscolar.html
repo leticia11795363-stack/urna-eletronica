@@ -1,22 +1,98 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Urna Eletronica</title>
-        <link rel="stylesheet" href="UrnaEscolar.css">
-    </head>
-    <body>
-        <main class="painel">
-        <h1>Urna Eletronica </h1>
-        <h2>Eleicao 2026</h2>
-        <p>Digite o numero da chapa:</p>
-        <form id="from-identificacao">
-            <label>Nome:</label>
-            <input id="nome">
-            <button type="submit">Continuar</button>
-            <p id="mensagem"></p>
-        </form>
-        </main>
-    </body>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urna Eletrônica Escolar</title>
+    <link rel="stylesheet" href="UrnaEscolar.css">
+    <script src="UrnaEscola.js" defer></script>
+</head>
+<body>
+    <main class="painel">
+        <header class="cabecalho">
+            <h1>Urna Eletrônica Escolar</h1>
+            <p>Eleição 2026</p>
+            <p id="statusEleicao" class="status-eleicao" role="status" aria-live="polite"></p>
+        </header>
+
+        <section id="etapaIdentificacao" aria-labelledby="tituloIdentificacao">
+            <h2 id="tituloIdentificacao">Identificação do aluno</h2>
+            <p id="orientacaoCodigo">Informe o código fornecido pela equipe responsável pela eleição.</p>
+            <form id="formIdentificacao">
+                <label for="codigoAluno">Código do aluno</label>
+                <input
+                    type="text"
+                    id="codigoAluno"
+                    name="codigoAluno"
+                    placeholder="Exemplo: A001"
+                    autocomplete="off"
+                    autocapitalize="characters"
+                    aria-describedby="orientacaoCodigo mensagemIdentificacao"
+                    required
+                >
+                <button type="submit">Validar código e continuar</button>
+            </form>
+            <p id="mensagemIdentificacao" class="mensagem" role="status" aria-live="polite"></p>
+        </section>
+
+        <section id="etapaVotacao" aria-labelledby="tituloVotacao" hidden>
+            <h2 id="tituloVotacao">Escolha uma opção</h2>
+            <p>Selecione uma opção e confirme seu voto.</p>
+            <form id="formVotacao">
+                <fieldset>
+                    <legend>Opções da eleição</legend>
+                    <label class="opcao">
+                        <input type="radio" name="opcao" value="1" required>
+                        <span><strong>1.</strong> Lógica de Programação</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="opcao" value="2">
+                        <span><strong>2.</strong> POO (Java)</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="opcao" value="3">
+                        <span><strong>3.</strong> Programação Web</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="opcao" value="4">
+                        <span><strong>4.</strong> Sistemas Operacionais</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="opcao" value="5">
+                        <span><strong>5.</strong> Arquitetura e Manutenção</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="opcao" value="6">
+                        <span><strong>6.</strong> Noções de Robótica</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="opcao" value="7">
+                        <span><strong>7.</strong> Gestão do Tempo</span>
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="opcao" value="8">
+                        <span><strong>8.</strong> HTML e CSS</span>
+                    </label>
+                </fieldset>
+                <div class="acoes">
+                    <button id="voltarIdentificacao" class="botao-secundario" type="button">Voltar</button>
+                    <button type="submit">Confirmar voto</button>
+                </div>
+            </form>
+            <p id="mensagemVotacao" class="mensagem" role="status" aria-live="polite"></p>
+        </section>
+
+        <section id="etapaConclusao" aria-labelledby="tituloConclusao" hidden>
+            <h2 id="tituloConclusao">Voto registrado</h2>
+            <p id="confirmacaoVoto" class="mensagem" role="status" aria-live="polite"></p>
+            <button id="novoVoto" type="button">Iniciar próximo voto</button>
+        </section>
+
+        <section id="etapaResultados" aria-labelledby="tituloResultados" hidden>
+            <h2 id="tituloResultados">Resultado final</h2>
+            <p id="totalVotos"></p>
+            <ol id="listaResultados" class="lista-resultados"></ol>
+        </section>
+    </main>
+</body>
 </html>

@@ -1,0 +1,20 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+public class UrnaEscolar {
+   public UrnaEscolar() {
+   }
+
+   public static void main(String[] args) {
+      Chapa chapa1 = new Chapa();
+      chapa1.nome = "Inovacao";
+      chapa1.numero = 10;
+      Chapa chapa2 = new Chapa();
+      chapa2.nome = "Futuro";
+      chapa2.numero = 20;
+      Chapa chapa3 = new Chapa();
+      chapa3.nome = "Progresso";
+      chapa3.numero = 30;
+      System.out.println("Candidato 1: " + chapa1.nome);
+      System.out.println("Candidato 2: " + chapa2.nome);
+      System.out.println("Candidato 3: " + chapa3.nome);
+   }
+}
